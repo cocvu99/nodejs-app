@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+  labels:
+    app: flask-app
+spec:
+  replicas: 5
+  strategy: # change here
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+        - name: nodejs-container
+          image: 'nexus.fit-haui.edu.vn/flask-image:latest'
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: sample-haui-nexus
