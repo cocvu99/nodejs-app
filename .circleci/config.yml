@@ -15,7 +15,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - run: echo :this is the build job"
+      - run: echo "this is the build job"
 
   test:
     docker:
