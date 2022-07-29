@@ -9,7 +9,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: cimg/node:lts-alpine
+      - image: node:lts-alpine
         auth:
           username: cocvu99
           password: $DOCKERHUB_PASSWORD
@@ -19,7 +19,7 @@ jobs:
 
   test:
     docker:
-      - image: cimg/node:lts-alpine
+      - image: node:lts-alpine
         auth:
           username: cocvu99
           password: $DOCKERHUB_PASSWORD
