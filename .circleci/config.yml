@@ -7,19 +7,23 @@ workflows:
       - build
       - test
 jobs:
-  build_and_test:
-    executor: node/default
+  build:
+    docker:
+      - image: cimg/node:lts-alpine
+        auth:
+          username: cocvu99
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          command: npm run test
-          name: Run test
-      - run:
-          command: npm run build
-          name: Build app
-      - persist_to_workspace:
-          root: ~/nodejs-app
-          paths:
-            - .
+      - run: echo :this is the build job"
+
+  test:
+    docker:
+      - image: cimg/node:lts-alpine
+        auth:
+          username: cocvu99
+          password: $DOCKERHUB_PASSWORD
+
+    steps:
+      - checkout
+      - run: echo "this is the TEST NE!!!!"
